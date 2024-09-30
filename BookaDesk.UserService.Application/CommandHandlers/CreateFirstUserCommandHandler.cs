@@ -1,5 +1,6 @@
 using BookaDesk.UserService.Application.Commands;
 using BookaDesk.UserService.Application.Validators.CommandValidators;
+using BookaDesk.UserService.Domain.Services;
 
 namespace BookaDesk.UserService.Application.CommandHandlers;
 
