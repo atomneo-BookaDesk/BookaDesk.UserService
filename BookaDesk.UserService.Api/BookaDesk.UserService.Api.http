@@ -5,7 +5,7 @@ GET {{BookaDesk.UserService_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ### First User Registration
-POST {{BookaDesk.UserService_HostAddress}}/register-first-user
+POST {{BookaDesk.UserService_HostAddress}}/create-first-user
 Content-Type: application/json
 
 {

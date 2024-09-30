@@ -1,4 +1,5 @@
 using BookaDesk.UserService.Api.Endpoints;
+using BookaDesk.UserService.Application.CommandHandlers;
 
 namespace BookaDesk.UserService.Api;
 
@@ -14,6 +15,9 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        
+        // Command Handlers
+        builder.Services.ConfigureCommandHandlers();
 
         var app = builder.Build();
 
