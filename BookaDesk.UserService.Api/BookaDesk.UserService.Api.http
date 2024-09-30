@@ -1,0 +1,74 @@
+@BookaDesk.UserService_HostAddress = https://bookadesk.mattsoft.it:5001
+
+### Weather Forecast
+GET {{BookaDesk.UserService_HostAddress}}/weatherforecast/
+Accept: application/json
+
+### First User Registration
+POST {{BookaDesk.UserService_HostAddress}}/register-first-user
+Content-Type: application/json
+
+{
+  "email": "neo1k4@gmail.com",
+  "password": "password",
+  "confirmPassword": "password"
+}
+
+### User Login
+POST {{BookaDesk.UserService_HostAddress}}/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "yourpassword"
+}
+
+### Get User Details
+GET {{BookaDesk.UserService_HostAddress}}/users/{{userId}}
+Authorization: Bearer {{yourToken}}
+
+### Update User Password
+PUT {{BookaDesk.UserService_HostAddress}}/users/{{userId}}/update-password
+Authorization: Bearer {{yourToken}}
+Content-Type: application/json
+
+{
+  "oldPassword": "oldpassword",
+  "newPassword": "newpassword"
+}
+
+### Logout User (if applicable)
+POST {{BookaDesk.UserService_HostAddress}}/logout
+Authorization: Bearer {{yourToken}}
+
+### Get all users
+GET {{BookaDesk.UserService_HostAddress}}/users
+Accept: application/json
+
+### Get user by ID
+GET {{BookaDesk.UserService_HostAddress}}/users/1
+Accept: application/json
+
+### Create a new user
+POST {{BookaDesk.UserService_HostAddress}}/users
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "email": "john.doe@example.com",
+  "age": 30
+}
+
+### Update user by ID
+PUT {{BookaDesk.UserService_HostAddress}}/users/1
+Content-Type: application/json
+
+{
+  "name": "John Smith",
+  "email": "john.smith@example.com",
+  "age": 31
+}
+
+### Delete user by ID
+DELETE {{BookaDesk.UserService_HostAddress}}/users/1
+Accept: application/json
