@@ -1,5 +1,8 @@
 using BookaDesk.UserService.Api.Endpoints;
-using BookaDesk.UserService.Application.CommandHandlers;
+using BookaDesk.UserService.Application;
+using BookaDesk.UserService.Domain;
+using BookaDesk.UserService.Domain.Services;
+using BookaDesk.UserService.Infrastructure;
 
 namespace BookaDesk.UserService.Api;
 
@@ -7,6 +10,9 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        var mongoDbConnectionString = Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING");
+        Console.WriteLine(mongoDbConnectionString);
+
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -15,9 +21,15 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        
-        // Command Handlers
-        builder.Services.ConfigureCommandHandlers();
+
+        // BookaDesk.UserService.Application
+        builder.Services.ConfigureApplication();
+
+        // BookaDesk.UserService.Domain
+        builder.Services.ConfigureDomain();
+
+        // BookaDesk.UserService.Infrastructure
+        builder.Services.ConfigureMongoDb(builder.Configuration);
 
         var app = builder.Build();
 
@@ -31,10 +43,10 @@ public class Program
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-        
+
         // Endpoints
         app.MapUserServiceEndpoints();
-        
+
         var summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"

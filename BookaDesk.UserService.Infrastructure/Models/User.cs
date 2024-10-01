@@ -2,11 +2,11 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace BookaDesk.UserService.Infrastructure.Models;
 
-public class UserDbModel(string email, string password) : DbEntity
+public class UserDbModel(string email, string passwordHash) : DbEntity
 {
     [BsonElement("Email")]
     public string Email { get; set; } = email;
 
-    [BsonElement("Password")]
-    public string Password { get; set; } = password;
+    [BsonElement("PasswordHash")]
+    public string PasswordHash { get; set; } = passwordHash;
 }

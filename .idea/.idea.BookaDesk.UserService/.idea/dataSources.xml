@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="54d822e9-c9ce-4dde-83d6-798043b52072">
+    <data-source source="LOCAL" name="mongodb@bookadesk.mattsoft.it" uuid="f8aa84f9-a6f0-428e-8d11-259d01b35fb7">
       <driver-ref>mongo</driver-ref>
       <synchronize>true</synchronize>
       <configured-by-url>true</configured-by-url>
       <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
-      <jdbc-url>mongodb://localhost:27017</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="UserService@localhost" uuid="f8aa84f9-a6f0-428e-8d11-259d01b35fb7">
-      <driver-ref>mongo</driver-ref>
-      <synchronize>true</synchronize>
-      <configured-by-url>true</configured-by-url>
-      <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
-      <jdbc-url>mongodb://localhost:27017/UserService</jdbc-url>
+      <jdbc-url>mongodb://bookadesk.mattsoft.it:27017/</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

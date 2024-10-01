@@ -1,14 +1,15 @@
 using BookaDesk.UserService.Domain.Exceptions;
 using BookaDesk.UserService.Domain.Models;
 using BookaDesk.UserService.Domain.Repositories;
+using BookaDesk.UserService.Infrastructure.Database;
 using BookaDesk.UserService.Infrastructure.Models;
 using MongoDB.Driver;
 
 namespace BookaDesk.UserService.Infrastructure.Repositories;
 
-public class UserRepository(IMongoDatabase database) : IUserRepository
+public class UserRepository(IMongoDbContext context) : IUserRepository
 {
-    private readonly IMongoCollection<UserDbModel> _users = database.GetCollection<UserDbModel>("Users");
+    private readonly IMongoCollection<UserDbModel> _users = context.Users;
 
     public async Task<User> GetByIdAsync(Guid id)
     {
@@ -59,12 +60,12 @@ public class UserRepository(IMongoDatabase database) : IUserRepository
 
     private User ToDomainModel(UserDbModel userEntity)
     {
-        return new User(userEntity.Email, userEntity.Password, Guid.Parse(userEntity.Id));
+        return new User(userEntity.Email, userEntity.PasswordHash, userEntity.Id);
     }
 
     private UserDbModel ToDbModel(User user)
     {
-        return new UserDbModel(user.Email, user.Password)
+        return new UserDbModel(user.Email, user.PasswordHash)
         {
             Id = user.Id.ToString()
         };

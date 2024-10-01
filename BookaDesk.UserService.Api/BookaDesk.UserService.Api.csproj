@@ -13,6 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\BookaDesk.UserService.Application\BookaDesk.UserService.Application.csproj" />
+      <ProjectReference Include="..\BookaDesk.UserService.Infrastructure\BookaDesk.UserService.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>

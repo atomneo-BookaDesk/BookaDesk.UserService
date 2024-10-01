@@ -1,4 +1,6 @@
 @BookaDesk.UserService_HostAddress = https://bookadesk.mattsoft.it:5001
+@email = sample-email@sample-domain.com
+@password = password
 
 ### Weather Forecast
 GET {{BookaDesk.UserService_HostAddress}}/weatherforecast/
@@ -9,9 +11,9 @@ POST {{BookaDesk.UserService_HostAddress}}/create-first-user
 Content-Type: application/json
 
 {
-  "email": "neo1k4@gmail.com",
-  "password": "password",
-  "confirmPassword": "password"
+  "email": {{email}},
+  "password": {{password}},
+  "confirmPassword": {{password}}
 }
 
 ### User Login
@@ -19,8 +21,8 @@ POST {{BookaDesk.UserService_HostAddress}}/login
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
-  "password": "yourpassword"
+  "email": {{email}},
+  "password": {{password}}
 }
 
 ### Get User Details

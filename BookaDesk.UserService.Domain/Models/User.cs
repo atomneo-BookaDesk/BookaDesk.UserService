@@ -1,10 +1,10 @@
 namespace BookaDesk.UserService.Domain.Models;
 
-public class User(string email, string password, Guid id) : IDomainModel
+public class User(string email, string passwordHash, string id = "") : IDomainModel
 {
-    public Guid Id { get; set; } = id;
+    public string Id { get; set; } = id;
 
     public string Email { get; set; } = email;
 
-    public string Password { get; set; } = password;
+    public string PasswordHash { get; set; } = passwordHash;
 }
